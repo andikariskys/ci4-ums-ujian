@@ -32,6 +32,11 @@
                                     <img src="https://star2.ums.ac.id/assets/images/logos/logo-light.png" class="dark-logo" alt="Logo-Dark">
                                     <img src="https://star2.ums.ac.id/assets/images/logos/logo-dark.png" class="light-logo" alt="Logo-light" style="display: none;">
                                 </a>
+                                <?php if (session()->getFlashdata('error')): ?>
+                                    <div class="alert alert-danger" role="alert">
+                                        <?= session()->getFlashdata('error') ?>
+                                    </div>
+                                <?php endif; ?>
                                 <h5 class="fs-5 text-body-secondary">Selamat datang di <span class="fw-bolder">Lorem</span>.</h5>
                                 <form action="<?= route_to('check_login') ?>" method="post">
                                     <div class="mb-3">

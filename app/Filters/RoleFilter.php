@@ -26,9 +26,8 @@ class RoleFilter implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         $role = session()->get('role');
-
-        // Check if the user is logged in and has the required role
-        if (!session()->get('isLoggedIn') || !in_array($role, $arguments)) {
+        // Cek apakah role pada session sesuai dengan yang diizinkan
+        if (!in_array($role, $arguments)) {
             return redirect()->to(route_to('login'))->with('error', 'Anda tidak memiliki izin untuk mengakses halaman ini.');
         }
     }
