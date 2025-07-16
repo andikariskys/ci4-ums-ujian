@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="https://star2.ums.ac.id/assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/libs/datatables.net-bs5/css/dataTables.bootstrap5.min.css') ?>" />
+    <link rel="stylesheet" href="<?= base_url('assets/libs/sweetalert2/dist/sweetalert2.min.css') ?>">
     <title><?= $active ?? 'Sistem Ujian Online' ?></title>
 </head>
 
@@ -16,7 +18,7 @@
     </div>
     <div id="main-wrapper">
 
-            <?= view('layouts/navbar', ['active' => $active]) ?>
+        <?= view('layouts/navbar', ['active' => $active]) ?>
 
         <div class="page-wrapper">
             <header class="topbar">
@@ -79,7 +81,7 @@
             </header>
 
             <div class="body-wrapper">
-                <div class="container-fluid">
+                <div class="container">
 
                     <?= $this->renderSection('content'); ?>
 
@@ -95,7 +97,12 @@
     <script src="<?= base_url('assets/js/theme/theme.js') ?>"></script>
     <script src="<?= base_url('assets/js/theme/app.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/jquery-3.7.1.min.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/apexcharts/dist/apexcharts.min.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
+    <script src="<?= base_url('assets/libs/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/sweetalert2/dist/sweetalert2.min.js') ?>"></script>
+
+    <?= $this->renderSection('scripts'); ?>
 </body>
 
 </html>

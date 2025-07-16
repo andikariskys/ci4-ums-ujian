@@ -2,7 +2,7 @@
 $admin_menu = [
         [
             'label' => 'Dashboard',
-            'url' => '/admin/dashboard',
+            'url' => '/admin',
             'icon' => 'ti ti-dashboard'
         ],
         [
@@ -24,7 +24,7 @@ $admin_menu = [
 $pengelola_menu = [
         [
             'label' => 'Dashboard',
-            'url' => '/pengelola/dashboard',
+            'url' => '/pengelola',
             'icon' => 'ti ti-dashboard'
         ],
         [
@@ -41,7 +41,7 @@ $pengelola_menu = [
 $mahasiswa_menu = [
         [
             'label' => 'Dashboard',
-            'url' => '/mahasiswa/dashboard',
+            'url' => '/mahasiswa',
             'icon' => 'ti ti-dashboard'
         ],
         [

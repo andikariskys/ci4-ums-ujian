@@ -29,7 +29,7 @@ class RoleFilter implements FilterInterface
 
         // Check if the user is logged in and has the required role
         if (!session()->get('isLoggedIn') || !in_array($role, $arguments)) {
-            return redirect()->to(route_to('login'))->with('error', 'You do not have permission to access this page.');
+            return redirect()->to(route_to('login'))->with('error', 'Anda tidak memiliki izin untuk mengakses halaman ini.');
         }
     }
 

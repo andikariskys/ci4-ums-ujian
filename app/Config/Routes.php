@@ -13,12 +13,12 @@ $routes->get('logout', 'Auth::logout', ['as' => 'logout']);
 
 $routes->group('admin', ['filter' => 'role:admin'], function ($routes) {
     $routes->get('/', 'Admin\Dashboard::index', ['as' => 'admin_dashboard']);
-    $routes->get('users', 'Admin\Users::index', ['as' => 'admin_users']);
+    $routes->get('users', 'Admin\User::index', ['as' => 'admin_users']);
     $routes->get('reports', 'Admin\Reports::index', ['as' => 'admin_reports']);
 });
 $routes->group('adminps', ['filter' => 'role:admin_ps'], function ($routes) {
     $routes->get('/', 'Adminps\Dashboard::index', ['as' => 'adminps_dashboard']);
-    $routes->get('users', 'Admin\Users::index', ['as' => 'adminps_users']);
+    $routes->get('users', 'Admin\User::index', ['as' => 'adminps_users']);
     $routes->get('reports', 'Admin\Reports::index', ['as' => 'adminps_reports']);
     $routes->get('soal', 'Pengelola\Soal::index', ['as' => 'pengelola_soal']);
     $routes->get('ujian', 'Pengelola\Ujian::index', ['as' => 'pengelola_ujian']);
