@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="https://star2.ums.ac.id/assets/images/logos/favicon.png" />
-    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link rel="stylesheet" href="<?= base_url('assets/css/styles.css') ?>" />
     <title><?= $active ?? 'Sistem Ujian Online' ?></title>
 </head>
 
@@ -59,14 +59,14 @@
                             </li>
                             <li class="nav-item d-none d-xl-block">
                                 <a href="main/index.html" class="text-nowrap nav-link">
-                                    <img src="assets/images/logos/dark-logo.svg" class="dark-logo" width="180" alt="modernize-img" />
-                                    <img src="assets/images/logos/light-logo.svg" class="light-logo" width="180" alt="modernize-img" />
+                                    <img src="<?= base_url('assets/images/logos/dark-logo.svg') ?>" class="dark-logo" width="180" alt="modernize-img" />
+                                    <img src="<?= base_url('assets/images/logos/light-logo.svg') ?>" class="light-logo" width="180" alt="modernize-img" />
                                 </a>
                             </li>
                         </ul>
                         <div class="d-block d-xl-none">
                             <a href="main/index.html" class="text-nowrap nav-link">
-                                <img src="assets/images/logos/dark-logo.svg" width="180" alt="modernize-img" />
+                                <img src="<?= base_url('assets/images/logos/dark-logo.svg') ?>" width="180" alt="modernize-img" />
                             </a>
                         </div>
                         <a class="navbar-toggler nav-icon-hover-bg rounded-circle p-0 mx-0 border-0" href="javascript:void(0)" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,13 +88,13 @@
         </div>
     </div>
     <div class="dark-transparent sidebartoggler"></div>
-    <script src="assets/js/vendor.min.js"></script>
-    <script src="assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/dist/simplebar.min.js"></script>
-    <script src="assets/js/theme/app.init.js"></script>
-    <script src="assets/js/theme/theme.js"></script>
-    <script src="assets/js/theme/app.min.js"></script>
-    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="<?= base_url('assets/js/vendor.min.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('assets/libs/simplebar/dist/simplebar.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/theme/app.init.js') ?>"></script>
+    <script src="<?= base_url('assets/js/theme/theme.js') ?>"></script>
+    <script src="<?= base_url('assets/js/theme/app.min.js') ?>"></script>
+    <script src="<?= base_url('assets/js/jquery-3.7.1.min.js') ?>"></script>
     <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
 

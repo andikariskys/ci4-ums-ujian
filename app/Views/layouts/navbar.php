@@ -1,9 +1,5 @@
 <?php
-$role = 'admin'; // This should be dynamically set based on the logged-in user's role
-$menu = [];
-
-if ($role == 'admin') {
-    $menu = [
+$admin_menu = [
         [
             'label' => 'Dashboard',
             'url' => '/admin/dashboard',
@@ -25,8 +21,7 @@ if ($role == 'admin') {
             'icon' => 'ti ti-file-check'
         ]
     ];
-} elseif ($role == 'pengelola') {
-    $menu = [
+$pengelola_menu = [
         [
             'label' => 'Dashboard',
             'url' => '/pengelola/dashboard',
@@ -43,8 +38,7 @@ if ($role == 'admin') {
             'icon' => 'ti ti-book-2'
         ]
     ];
-} elseif ($role == 'mahasiswa') {
-    $menu = [
+$mahasiswa_menu = [
         [
             'label' => 'Dashboard',
             'url' => '/mahasiswa/dashboard',
@@ -71,6 +65,18 @@ if ($role == 'admin') {
             'icon' => 'ti ti-file-description'
         ]
     ];
+
+$role = 'admin';
+$menu = [];
+
+if ($role == 'admin') {
+    $menu = $admin_menu;
+} elseif ($role == 'admin_ps') {
+    $menu = array_merge($admin_menu, $pengelola_menu);
+} elseif ($role == 'pengelola') {
+    $menu = $pengelola_menu;
+} elseif ($role == 'mahasiswa') {
+    $menu = $mahasiswa_menu;
 }
 ?>
 
@@ -104,15 +110,15 @@ if ($role == 'admin') {
         <div class="fixed-profile p-3 mx-4 mb-2 bg-secondary-subtle rounded mt-3">
             <div class="hstack gap-3">
                 <div class="john-img">
-                    <img src="assets/images/profile/user-1.jpg" class="rounded-circle" width="40" height="40" alt="modernize-img" />
+                    <img src="<?= base_url('assets/images/profile/user-1.jpg') ?>" class="rounded-circle" width="40" height="40" alt="modernize-img" />
                 </div>
                 <div class="john-title">
                     <h6 class="mb-0 fs-4 fw-semibold">L200230023</h6>
                     <span class="fs-2 text-uppercase">Andika Risky Septiawan</span>
                 </div>
-                <button class="border-0 bg-transparent text-primary ms-auto" tabindex="0" type="button" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
+                <a href="<?= route_to('logout') ?>" class="border-0 bg-transparent text-primary ms-auto" tabindex="0" aria-label="logout" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="logout">
                     <i class="ti ti-power fs-6"></i>
-                </button>
+                </a>
             </div>
         </div>
     </div>
