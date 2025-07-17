@@ -9,9 +9,22 @@
             <div class="d-flex justify-content-end gap-1">
                 <button type="button" class="btn btn-primary" id="sync-confirm"><i class="ti ti-refresh"></i> Sinkronkan Moodle</button>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bs-example-modal-md"><i class="ti ti-upload"></i> Import Pengguna</button>
-                <a href="#" class="btn btn-primary"><i class="ti ti-user-plus"></i> Tambah Pengguna</a>
+                <a href="<?= route_to('admin_users_create') ?>" class="btn btn-primary"><i class="ti ti-user-plus"></i> Tambah Pengguna</a>
             </div>
-            <div class="table-responsive">
+            
+            <?php if (session()->getFlashdata('success')): ?>
+                <div class="alert alert-success alert-dismissible fade show mt-2" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <?= session()->getFlashdata('success') ?>
+                </div>
+            <?php elseif (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <?= session()->getFlashdata('error') ?>
+                </div>
+            <?php endif; ?>
+
+            <div class="table-responsive overflow-auto pb-2">
                 <table class="table table-striped table-bordered text-nowrap align-middle" id="userTable">
                     <thead class="text-dark fs-4">
                         <tr>
@@ -36,87 +49,62 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <h6 class="fs-4 fw-semibold mb-0">1</h6>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img src="../assets/images/profile/user-5.jpg" class="rounded-circle" width="40" height="40" />
-                                    <div class="ms-3">
-                                        <h6 class="fs-4 fw-semibold mb-0">Super Admin</h6>
-                                        <span class="fw-normal">admin</span>
+                        <?php $no = 0;
+                        foreach ($users as $user):
+                            $no++; ?>
+                            <tr>
+                                <td>
+                                    <h6 class="fs-4 fw-semibold mb-0"><?= $no ?></h6>
+                                </td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="<?php if ($user['gender'] == 'Laki-laki') {
+                                                        echo base_url('assets/images/profile/user-5.jpg');
+                                                    } else {
+                                                        echo base_url('assets/images/profile/user-4.jpg');
+                                                    } ?>" class="rounded-circle" width="40" height="40" />
+                                        <div class="ms-3">
+                                            <h6 class="fs-4 fw-semibold mb-0"><?= $user['name'] ?></h6>
+                                            <span class="fw-normal"><?= $user['username'] ?></span>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="mb-0 fw-normal fs-4">admin@ums.ac.id</p>
-                            </td>
-                            <td>
-                                <p class="badge text-bg-secondary mb-0">Admin</p>
-                            </td>
-                            <td>
-                                <span class="badge bg-success-subtle text-success">Aktif</span>
-                            </td>
-                            <td class="d-flex gap-1 justify-content-center">
-                                <button type="button" class="btn btn-danger"><i class="ti ti-user-minus"></i> Non-aktifkan</button>
-                                <button type="button" class="btn btn-warning"><i class="ti ti-settings"></i> Ubah</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6 class="fs-4 fw-semibold mb-0">2</h6>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img src="../assets/images/profile/user-5.jpg" class="rounded-circle" width="40" height="40" />
-                                    <div class="ms-3">
-                                        <h6 class="fs-4 fw-semibold mb-0">Andika Risky Septiawan</h6>
-                                        <span class="fw-normal">L200230023</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="mb-0 fw-normal fs-4">l200230023@student.ums.ac.id</p>
-                            </td>
-                            <td>
-                                <p class="badge text-bg-secondary mb-0">Mahasiswa</p>
-                            </td>
-                            <td>
-                                <span class="badge bg-success-subtle text-success">Aktif</span>
-                            </td>
-                            <td class="d-flex gap-1 justify-content-center">
-                                <button type="button" class="btn btn-danger"><i class="ti ti-user-minus"></i> Non-aktifkan</button>
-                                <button type="button" class="btn btn-warning"><i class="ti ti-settings"></i> Ubah</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6 class="fs-4 fw-semibold mb-0">3</h6>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <img src="../assets/images/profile/user-4.jpg" class="rounded-circle" width="40" height="40" />
-                                    <div class="ms-3">
-                                        <h6 class="fs-4 fw-semibold mb-0">Alta Moda Kristin Naro</h6>
-                                        <span class="fw-normal">L200230024</span>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-                                <p class="mb-0 fw-normal fs-4">l200230024@student.ums.ac.id</p>
-                            </td>
-                            <td>
-                                <p class="badge text-bg-secondary mb-0">Mahasiswa</p>
-                            </td>
-                            <td>
-                                <span class="badge bg-danger-subtle text-danger">Nonaktif</span>
-                            </td>
-                            <td class="d-flex gap-1 justify-content-center">
-                                <button type="button" class="btn btn-success"><i class="ti ti-user-check"></i> Aktifkan</button>
-                                <button type="button" class="btn btn-warning"><i class="ti ti-settings"></i> Ubah</button>
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    <p class="mb-0 fw-normal fs-4"><?= $user['email'] ?></p>
+                                </td>
+                                <td>
+                                    <p class="badge <?= $user['role_badge'] ?> mb-0"><?php if ($user['role'] == 'admin') {
+                                        echo 'Administrator';
+                                    } elseif ($user['role'] == 'adminps') {
+                                        echo 'Admin Pengelola Soal';
+                                    } elseif ($user['role'] == 'pengelola') {
+                                        echo 'Pengelola Soal';
+                                    } elseif ($user['role'] == 'mahasiswa') {
+                                        echo 'Mahasiswa';
+                                    } ?></p>
+                                </td>
+                                <td>
+                                    <span class="badge <?= $user['status_badge'] ?>"><?= $user['status'] ?></span>
+                                </td>
+                                <td>
+                                    <?php if ($user['status'] === 'Aktif'): ?>
+                                        <button type="button" class="btn btn-danger">
+                                            <i class="ti ti-user-minus"></i> Non-aktifkan
+                                        </button>
+                                    <?php else: ?>
+                                        <button type="button" class="btn btn-success">
+                                            <i class="ti ti-user-check"></i> Aktifkan
+                                        </button>
+                                    <?php endif; ?>
+                                    <button type="button" class="btn btn-info" id="reset-password">
+                                        <i class="ti ti-lock-open"></i> Reset Password
+                                    </button>
+                                    <a href="<?= route_to('admin_users_edit', $user['id']) ?>" type="button" class="btn btn-warning">
+                                        <i class="ti ti-settings"></i> Ubah
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -133,7 +121,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="ps-3 pr-3" action="#">
+                <form class="ps-3 pr-3" action="#" enctype="multipart/form-data" method="post">
                     <div class="mb-3 d-flex flex-column">
                         <label>Unduh template</label>
                         <div class="d-flex gap-2">
@@ -172,7 +160,7 @@
     $("#sync-confirm").click(function() {
         Swal.fire({
             title: "Apakah anda yakin?",
-            text: "Ini akan menyinkronkan data pengguna dari Moodle. Tetapi tidak akan menghapus dan mengubah data pengguna (termasuk peran) yang ada.",
+            text: "Ini akan mengambil data pengguna dari Moodle. Tetapi tidak akan menghapus dan mengubah data pengguna (termasuk peran) yang sudah ada.",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -181,6 +169,22 @@
         }).then((result) => {
             if (result.value) {
                 Swal.fire("Sukses!", "Data pengguna telah disinkronkan.", "success");
+            }
+        });
+    });
+
+    $("#reset-password").click(function() {
+        Swal.fire({
+            title: "Apakah anda yakin?",
+            text: "Ini akan mereset password pengguna.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, reset password!",
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire("Sukses!", "Password pengguna saat ini adalah <span class='fw-bold'>pass123#</span> mohon disalin sebelum ditutup.", "success");
             }
         });
     });

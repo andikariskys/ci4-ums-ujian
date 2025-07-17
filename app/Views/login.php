@@ -41,9 +41,9 @@
                                 <form action="<?= route_to('check_login') ?>" method="post">
                                     <div class="mb-3">
                                         <label for="exampleInputUsername1" class="form-label">Username</label>
-                                        <input type="text" name="username" class="form-control <?php if (session()->getFlashdata('invalid_email')): ?>is-invalid<?php endif; ?>" id="exampleInputUsername1" aria-describedby="emailHelp" required autocomplete="off">
+                                        <input type="text" name="username" class="form-control <?php if (session()->getFlashdata('invalid_username')): ?>is-invalid<?php endif; ?>" id="exampleInputUsername1" aria-describedby="usernameHelp" value="<?= session()->getFlashdata('username') ?>" required autocomplete="off">
                                         <div class="invalid-feedback">
-                                            <?= session()->getFlashdata('invalid_email') ?>
+                                            <?= session()->getFlashdata('invalid_username') ?>
                                         </div>
                                     </div>
                                     <div class="mb-4">

@@ -30,7 +30,7 @@ class Auth extends BaseController
         }
 
         if ($this->users[$username][0] !== $password) {
-            return redirect()->back()->with('invalid_password', 'Password salah silakan coba lagi');
+            return redirect()->back()->with('invalid_password', 'Password salah silakan coba lagi')->with('username', $username);
         }
 
         session()->set([

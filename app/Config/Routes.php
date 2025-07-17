@@ -14,6 +14,8 @@ $routes->get('logout', 'Auth::logout', ['as' => 'logout']);
 $routes->group('admin', ['filter' => ['auth', 'role:admin']], function ($routes) {
     $routes->get('/', 'Admin\Dashboard::index', ['as' => 'admin_dashboard']);
     $routes->get('users', 'Admin\User::index', ['as' => 'admin_users']);
+    $routes->get('users/create', 'Admin\User::create', ['as' => 'admin_users_create']);
+    $routes->get('users/edit/(:any)', 'Admin\User::edit/$1', ['as' => 'admin_users_edit']);
     $routes->get('reports', 'Admin\Reports::index', ['as' => 'admin_reports']);
 });
 $routes->group('adminps', ['filter' => ['auth', 'role:admin_ps']], function ($routes) {
