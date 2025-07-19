@@ -45,28 +45,13 @@ $mahasiswa_menu = [
             'icon' => 'ti ti-dashboard'
         ],
         [
-            'label' => 'Jadwal Ujian',
-            'url' => '/mahasiswa/jadwal',
-            'icon' => 'ti ti-calendar'
-        ],
-        [
-            'label' => 'Pre-Test SEB',
-            'url' => '/mahasiswa/pretest',
-            'icon' => 'ti ti-shield-check'
-        ],
-        [
-            'label' => 'Reset Password SEB',
-            'url' => '/mahasiswa/reset-seb',
-            'icon' => 'ti ti-lock-reset'
-        ],
-        [
             'label' => 'Hasil Ujian',
             'url' => '/mahasiswa/hasil',
             'icon' => 'ti ti-file-description'
         ]
     ];
 
-$role = 'admin';
+$role = session()->get('role');
 $menu = [];
 
 if ($role == 'admin') {

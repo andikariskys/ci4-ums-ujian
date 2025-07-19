@@ -8,11 +8,30 @@ use CodeIgniter\HTTP\ResponseInterface;
 class Auth extends BaseController
 {
     private $users = [
-        // email => [password, name, role]
-        'admin'      => ['admin123', 'Admin User', 'admin'],
-        'adminps'    => ['adminps123', 'Admin + Pengelola', 'admin_ps'],
-        'pengelola'  => ['pengelola123', 'Pengelola Soal', 'pengelola'],
-        'mahasiswa'  => ['mahasiswa123', 'Mahasiswa A', 'mahasiswa'],
+        [
+            'username' => 'admin',
+            'password' => 'admin123',
+            'name' => 'Admin User',
+            'role' => 'admin'
+        ],
+        [
+            'username' => 'adminps',
+            'password' => 'adminps123',
+            'name' => 'Admin + Pengelola',
+            'role' => 'admin_ps'
+        ],
+        [
+            'username' => 'pengelola',
+            'password' => 'pengelola123',
+            'name' => 'Pengelola Soal',
+            'role' => 'pengelola'
+        ],
+        [
+            'username' => 'mahasiswa',
+            'password' => 'mahasiswa123',
+            'name' => 'Mahasiswa A',
+            'role' => 'mahasiswa'
+        ],
     ];
 
     public function login()
@@ -25,18 +44,26 @@ class Auth extends BaseController
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
-        if (!isset($this->users[$username])) {
+        $dataUser = null;
+        foreach ($this->users as $user) {
+            if ($user['username'] === $username) {
+                $dataUser = $user;
+                break;
+            }
+        }
+
+        if (!$dataUser) {
             return redirect()->back()->with('invalid_username', 'Username salah atau tidak ditemukan');
         }
 
-        if ($this->users[$username][0] !== $password) {
+        if ($dataUser['password'] !== $password) {
             return redirect()->back()->with('invalid_password', 'Password salah silakan coba lagi')->with('username', $username);
         }
 
         session()->set([
             'username' => $username,
-            'name'  => $this->users[$username][1],
-            'role'  => $this->users[$username][2],
+            'name'  => $dataUser['name'],
+            'role'  => $dataUser['role'],
             'isLoggedIn' => true
         ]);
         
